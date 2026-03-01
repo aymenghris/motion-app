@@ -1,0 +1,16 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Biome: Unsafe Check",
+            "type": "shell",
+            "command": "biome check --write --unsafe \"${relativeFile}\"",
+            "presentation": {
+                "reveal": "always",
+                "close": true
+            },
+            "problemMatcher": [],
+            "detail": "Sort Tailwind Classes"
+        }
+    ]
+}
