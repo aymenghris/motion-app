@@ -1,19 +1,22 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import type { FC } from "react"
+import { FaviconHandler } from "@/components/FaviconHandler"
+import { ThemeProvider } from "@/components/providers/theme-provider"
+import { assets } from "@/constants"
 
 export const metadata: Metadata = {
-    title: "Motion App",
+    title: "Motion",
     description:
-        "Motion App is a flexible, all-in-one workspace for your notes, tasks, and projects.",
+        "Motion is a flexible, all-in-one workspace for your notes, tasks, and projects.",
     icons: {
         icon: [
             {
-                url: "/favicon-light.svg",
+                url: assets.brand.favicon.light,
                 media: "(prefers-color-scheme: light)",
             },
             {
-                url: "/favicon-dark.svg",
+                url: assets.brand.favicon.dark,
                 media: "(prefers-color-scheme: dark)",
             },
         ],
@@ -26,8 +29,19 @@ interface RootLayoutProps {
 
 export const RootLayout: FC<RootLayoutProps> = ({ children }) => {
     return (
-        <html lang="en">
-            <body>{children}</body>
+        <html lang="en" suppressHydrationWarning>
+            <body>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                    storageKey="theme"
+                >
+                    <FaviconHandler />
+                    {children}
+                </ThemeProvider>
+            </body>
         </html>
     )
 }
