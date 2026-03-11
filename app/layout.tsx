@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import type { FC } from "react"
 import { FaviconHandler } from "@/components/FaviconHandler"
-import { ThemeProvider } from "@/components/providers/theme-provider"
+import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import { assets } from "@/constants"
 
 export const metadata: Metadata = {
