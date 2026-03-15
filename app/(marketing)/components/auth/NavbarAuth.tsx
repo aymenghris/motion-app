@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Spinner } from "@/components/ui/spinner"
 
-export const AuthButtons = () => {
+export const NavbarAuth = () => {
     return (
         <>
             <Authenticated>

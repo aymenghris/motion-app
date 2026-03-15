@@ -3,7 +3,7 @@
 import { ModeToggle } from "@/components/ModeToggle"
 import { useScrollTop } from "@/hooks/useScrollTop"
 import { cn } from "@/lib/utils"
-import { AuthButtons } from "./AuthButtons"
+import { NavbarAuth } from "./auth/NavbarAuth"
 import { Logo } from "./Logo"
 
 export const Navbar = () => {
@@ -22,7 +22,7 @@ export const Navbar = () => {
             <Logo />
 
             <div className="flex items-center justify-between gap-x-4 max-md:grow">
-                <AuthButtons />
+                <NavbarAuth />
                 <ModeToggle />
             </div>
         </div>
