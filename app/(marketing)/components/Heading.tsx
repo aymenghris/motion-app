@@ -1,7 +1,6 @@
 "use client"
 
-import { ArrowRightIcon } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { HeadingAuth } from "./auth/HeadingAuth"
 
 export const Heading = () => {
     return (
@@ -17,10 +16,7 @@ export const Heading = () => {
                 better, faster work happens.
             </h3>
 
-            <Button>
-                enter motion
-                <ArrowRightIcon className="ml-2" />
-            </Button>
+            <HeadingAuth />
         </div>
     )
 }
