@@ -25,7 +25,7 @@ export const HeadingAuth = () => {
 
             <AuthLoading>
                 <div className="flex items-center justify-center">
-                    <Spinner className="size-6" />
+                    <Spinner size='lg' />
                 </div>
             </AuthLoading>
         </>
