@@ -11,3 +11,11 @@ export const assets = {
         },
     },
 }
+
+export const SIDEBAR_CONSTANTS = {
+    MIN_WIDTH: 240,
+    MAX_WIDTH: 480,
+    DEFAULT_WIDTH: 240,
+    MOBILE_BREAKPOINT: "(max-width: 768px)",
+    RESET_DURATION: 300,
+} as const
