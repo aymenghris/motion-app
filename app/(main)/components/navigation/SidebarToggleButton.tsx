@@ -17,7 +17,7 @@ export const SidebarToggleButton: FC<SidebarToggleButtonProps> = ({
         size="icon-sm"
         variant="ghost"
         className={cn(
-            "absolute top-3 right-2",
+            "absolute top-1 right-2",
             "text-muted-foreground",
             "opacity-0 transition",
             "hover:bg-neutral-300 dark:hover:bg-neutral-600",
