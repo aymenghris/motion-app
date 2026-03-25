@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 const buttonVariants = cva(
     cn(
         "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap",
-        "cursor-pointer rounded-md font-medium text-sm capitalize",
+        "cursor-pointer rounded-md font-medium text-sm",
         "outline-none transition-all",
         "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
         "disabled:pointer-events-none disabled:opacity-50",
@@ -52,10 +52,12 @@ function Button({
     variant = "default",
     size = "default",
     asChild = false,
+    capitalized = true,
     ...props
 }: React.ComponentProps<"button"> &
     VariantProps<typeof buttonVariants> & {
         asChild?: boolean
+        capitalized?: boolean
     }) {
     const Comp = asChild ? Slot.Root : "button"
 
@@ -64,7 +66,7 @@ function Button({
             data-slot="button"
             data-variant={variant}
             data-size={size}
-            className={cn(buttonVariants({ variant, size, className }))}
+            className={cn(buttonVariants({ variant, size, className }), capitalized && "capitalize")}
             {...props}
         />
     )

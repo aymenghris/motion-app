@@ -10,6 +10,9 @@ export const assets = {
             dark: "/brand/favicon/favicon-dark.svg",
         },
     },
+    documents: {
+        empty: "/documents/empty.svg",
+    },
 }
 
 export const SIDEBAR_CONSTANTS = {
