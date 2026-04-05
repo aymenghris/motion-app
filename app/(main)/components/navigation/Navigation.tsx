@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react"
 import { useSidebarResize } from "@/hooks/useSidebarResize"
 import { useSidebarState } from "@/hooks/useSidebarState"
 import { cn } from "@/lib/utils"
+import { NewPageButton, SearchItem, SettingsItem } from "../items"
 import { UserItems } from "../UserItems"
 import { Navbar } from "./Navbar"
 import { SidebarResizer } from "./SidebarResizer"
@@ -52,6 +53,12 @@ export const Navigation = () => {
                 <SidebarToggleButton onClick={collapse} isMobile={isMobile} />
 
                 <UserItems />
+
+                <SearchItem />
+
+                <SettingsItem />
+
+                <NewPageButton />
 
                 {/* Drag handle for resizing */}
                 <SidebarResizer
