@@ -5,10 +5,12 @@ import { PlusCircleIcon } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { assets } from "@/constants"
+import { useCreateDocument } from "@/hooks/useCreateDocument"
 import { title } from "@/lib/utils"
 
 const DocumentsPage = () => {
     const { user } = useUser()
+    const { handleCreateDocument } = useCreateDocument()
 
     return (
         <div className="flex h-full flex-col items-center justify-center space-y-4">
@@ -22,7 +24,7 @@ const DocumentsPage = () => {
             <h1 className="font-semibold text-xl">
                 {title(`welcome to ${user?.firstName}'s motion`)}
             </h1>
-            <Button capitalized={false}>
+            <Button onClick={handleCreateDocument} capitalized={false}>
                 <PlusCircleIcon className="mr-2 size-4" />
                 {title("create a note")}
             </Button>
