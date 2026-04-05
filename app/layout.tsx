@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { ClerkProvider } from "@clerk/nextjs"
 import type { FC } from "react"
+import { Toaster } from "sonner"
 import { FaviconHandler } from "@/components/FaviconHandler"
 import ConvexClientProvider from "@/components/providers/ConvexClientProvider"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
@@ -29,7 +30,7 @@ interface RootLayoutProps {
     children: React.ReactNode
 }
 
-export const RootLayout: FC<RootLayoutProps> = ({ children }) => {
+const RootLayout: FC<RootLayoutProps> = ({ children }) => {
     return (
         <html lang="en" suppressHydrationWarning>
             <body>
@@ -43,6 +44,7 @@ export const RootLayout: FC<RootLayoutProps> = ({ children }) => {
                             storageKey="theme"
                         >
                             <FaviconHandler />
+                            <Toaster position="bottom-right" />
                             {children}
                         </ThemeProvider>
                     </ConvexClientProvider>
