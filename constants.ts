@@ -22,3 +22,11 @@ export const SIDEBAR_CONSTANTS = {
     MOBILE_BREAKPOINT: "(max-width: 768px)",
     RESET_DURATION: 300,
 } as const
+
+export const INDENT_PER_LEVEL = 12
+export const BASE_PADDING = 12
+export const NESTED_BASE_PADDING = 25
+
+export const ROOT_LEVEL = 0
+export const ROOT_SKELETON_COUNT = 3
+export const NESTED_SKELETON_COUNT = 1
