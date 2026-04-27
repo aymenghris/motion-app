@@ -1,6 +1,6 @@
 import { SettingsIcon } from "lucide-react"
-import { Item } from "../item/Item"
+import { StaticItem } from "./StaticItem"
 
 export const SettingsItem = () => {
-    return <Item label="settings" icon={SettingsIcon} onClick={() => {}} />
+    return <StaticItem label="settings" icon={SettingsIcon} onClick={() => {}} />
 }

@@ -1,12 +1,12 @@
 import { PlusCircle } from "lucide-react"
 import { useCreateDocument } from "@/hooks/useCreateDocument"
-import { Item } from "../item/Item"
+import { StaticItem } from "./StaticItem"
 
 export const NewPageButton = () => {
     const { handleCreateDocument } = useCreateDocument()
 
     return (
-        <Item
+        <StaticItem
             onClick={handleCreateDocument}
             label="new page"
             icon={PlusCircle}

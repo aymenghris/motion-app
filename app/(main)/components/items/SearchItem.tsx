@@ -1,10 +1,10 @@
 import { SearchIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { Item } from "../item/Item"
+import { StaticItem } from "./StaticItem"
 
 export const SearchItem = () => {
     return (
-        <Item label="search" icon={SearchIcon} onClick={() => {}}>
+        <StaticItem label="search" icon={SearchIcon} onClick={() => {}}>
             <kbd
                 className={cn(
                     "inline-flex items-center gap-1",
@@ -16,6 +16,6 @@ export const SearchItem = () => {
             >
                 <span className="text-xs">⌘</span>K
             </kbd>
-        </Item>
+        </StaticItem>
     )
 }
