@@ -5,7 +5,13 @@ import { useEffect, useRef } from "react"
 import { useSidebarResize } from "@/hooks/useSidebarResize"
 import { useSidebarState } from "@/hooks/useSidebarState"
 import { cn } from "@/lib/utils"
-import { NewPageButton, SearchItem, SettingsItem } from "../items"
+import { DocumentList } from "../document-list/DocumentList"
+import {
+    AddPageButton,
+    NewPageButton,
+    SearchItem,
+    SettingsItem,
+} from "../items"
 import { UserItems } from "../UserItems"
 import { Navbar } from "./Navbar"
 import { SidebarResizer } from "./SidebarResizer"
@@ -59,6 +65,11 @@ export const Navigation = () => {
                 <SettingsItem />
 
                 <NewPageButton />
+
+                <div className="mt-4">
+                    <DocumentList />
+                    <AddPageButton />
+                </div>
 
                 {/* Drag handle for resizing */}
                 <SidebarResizer
