@@ -24,10 +24,11 @@ export const StaticItem = ({
             variant="sidebar"
             size="full"
             className={cn("group pl-3", active && "bg-primary/5 text-primary")}
+            capitalized={false}
         >
             <Icon className="mr-2 h-4.5 shrink-0 text-muted-foreground" />
 
-            <span className="truncate">{label}</span>
+            <span className="truncate first-letter:uppercase">{label}</span>
 
             {children}
         </Button>
