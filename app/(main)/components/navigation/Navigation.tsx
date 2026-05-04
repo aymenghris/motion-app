@@ -11,6 +11,7 @@ import {
     NewPageButton,
     SearchItem,
     SettingsItem,
+    TrashItem,
 } from "../items"
 import { UserItems } from "../UserItems"
 import { Navbar } from "./Navbar"
@@ -69,6 +70,7 @@ export const Navigation = () => {
                 <div className="mt-4">
                     <DocumentList />
                     <AddPageButton />
+                    <TrashItem isMobile={isMobile} />
                 </div>
 
                 {/* Drag handle for resizing */}
