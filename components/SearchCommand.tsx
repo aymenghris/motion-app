@@ -3,7 +3,7 @@
 import { useQuery } from "convex/react"
 import { File } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 import {
     CommandDialog,
@@ -22,12 +22,6 @@ export const SearchCommand = () => {
 
     const { isOpen, onClose, toggle } = useSearchStoreSelector()
 
-    const [mounted, setMounted] = useState(false)
-
-    useEffect(() => {
-        setMounted(true)
-    }, [])
-
     useEffect(() => {
         const down = (e: KeyboardEvent) => {
             if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -39,10 +33,6 @@ export const SearchCommand = () => {
         document.addEventListener("keydown", down)
         return () => document.removeEventListener("keydown", down)
     }, [toggle])
-
-    if (!mounted) {
-        return null
-    }
 
     return (
         <CommandDialog open={isOpen} onOpenChange={onClose}>
