@@ -1,5 +1,6 @@
 import type { FC } from "react"
 import { AuthLoadingScreen } from "@/components/AuthLoadingScreen"
+import { SearchCommand } from "@/components/SearchCommand"
 import { Navigation } from "./components/navigation/Navigation"
 
 interface MainLayoutProps {
@@ -13,7 +14,10 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
 
             <div className="flex dark:bg-obsidian">
                 <Navigation />
-                <main className="flex-1 overflow-y-auto">{children}</main>
+                <main className="flex-1 overflow-y-auto">
+                    <SearchCommand />
+                    {children}
+                </main>
             </div>
         </>
     )
