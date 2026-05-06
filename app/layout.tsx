@@ -5,6 +5,7 @@ import type { FC } from "react"
 import { Toaster } from "sonner"
 import { FaviconHandler } from "@/components/FaviconHandler"
 import ConvexClientProvider from "@/components/providers/ConvexClientProvider"
+import { ModalProvider } from "@/components/providers/ModalProvider"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import { assets } from "@/constants"
 
@@ -45,6 +46,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
                         >
                             <FaviconHandler />
                             <Toaster position="bottom-right" />
+                            <ModalProvider />
                             {children}
                         </ThemeProvider>
                     </ConvexClientProvider>
