@@ -28,3 +28,30 @@ export const getValidatedDocument = async (
 
     return document
 }
+
+export const getPublicOrOwnedDocument = async (
+    ctx: MutationCtx | QueryCtx,
+    id: Id<"documents">,
+) => {
+    const identity = await ctx.auth.getUserIdentity()
+
+    const document = await ctx.db.get(id)
+
+    if (!document) {
+        throw new Error("Document not found")
+    }
+
+    if (document.isPublished && !document.isArchived) {
+        return document
+    }
+
+    if (!identity) {
+        throw new Error("Not authenticated")
+    }
+
+    if (document.userId !== identity.subject) {
+        throw new Error("Unauthorized")
+    }
+
+    return document
+}

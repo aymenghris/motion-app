@@ -1,5 +1,9 @@
 import { v } from "convex/values"
-import { getAuthenticatedUser, getValidatedDocument } from "@/convex/helpers"
+import {
+    getAuthenticatedUser,
+    getPublicOrOwnedDocument,
+    getValidatedDocument,
+} from "@/convex/helpers"
 import type { Id } from "./_generated/dataModel"
 import { mutation, query } from "./_generated/server"
 
@@ -48,6 +52,34 @@ export const getSearch = query({
             .filter((q) => q.eq(q.field("isArchived"), false))
             .order("desc")
             .collect()
+    },
+})
+
+export const getDocumentById = query({
+    args: { id: v.id("documents") },
+    handler: async (ctx, args) => {
+        return await getPublicOrOwnedDocument(ctx, args.id)
+    },
+})
+
+export const updateDocument = mutation({
+    args: {
+        id: v.id("documents"),
+        title: v.optional(v.string()),
+        content: v.optional(v.string()),
+        coverImage: v.optional(v.string()),
+        icon: v.optional(v.string()),
+        isPublished: v.optional(v.boolean()),
+    },
+    handler: async (ctx, args) => {
+        const userId = await getAuthenticatedUser(ctx)
+        await getValidatedDocument(ctx, args.id, userId)
+
+        const { id, ...documentFields } = args
+
+        return await ctx.db.patch(id, {
+            ...documentFields,
+        })
     },
 })
 
