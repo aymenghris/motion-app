@@ -1,7 +1,7 @@
 import { useMutation } from "convex/react"
 import { PlusIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
-import type { FC, MouseEvent } from "react"
+import type { FC } from "react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { api } from "@/convex/_generated/api"
@@ -21,9 +21,7 @@ export const CreateNestedDocument: FC<CreateNestedDocumentProps> = ({
     const router = useRouter()
     const createDocument = useMutation(api.documents.createDocument)
 
-    const handleCreateDocument = (e: MouseEvent) => {
-        e.stopPropagation()
-
+    const handleCreateDocument = () => {
         const promise = createDocument({
             title: "Untitled",
             parentDocument: id,
@@ -40,7 +38,11 @@ export const CreateNestedDocument: FC<CreateNestedDocumentProps> = ({
     }
 
     return (
-        <Button onClick={handleCreateDocument} variant="sidebar-action" size='icon-xs'>
+        <Button
+            onClick={handleCreateDocument}
+            variant="sidebar-action"
+            size="icon-xs"
+        >
             <PlusIcon className="size-4 text-muted-foreground" />
         </Button>
     )

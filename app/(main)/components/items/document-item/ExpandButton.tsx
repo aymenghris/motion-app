@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronRight } from "lucide-react"
-import type { FC, MouseEvent } from "react"
+import type { FC } from "react"
 import { cn } from "@/lib/utils"
 
 type ExpandButtonProps = {
@@ -10,15 +10,10 @@ type ExpandButtonProps = {
 export const ExpandButton: FC<ExpandButtonProps> = ({ expanded, onExpand }) => {
     const ChevronIcon = expanded ? ChevronDown : ChevronRight
 
-    const handleClick = (e: MouseEvent) => {
-        e.stopPropagation()
-        onExpand()
-    }
-
     return (
         <button
             type="button"
-            onClick={handleClick}
+            onClick={onExpand}
             aria-label={expanded ? "Collapse" : "Expand"}
             aria-expanded={expanded}
             className={cn(

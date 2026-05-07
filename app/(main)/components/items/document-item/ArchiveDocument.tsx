@@ -1,7 +1,7 @@
 import { useUser } from "@clerk/nextjs"
 import { useMutation } from "convex/react"
 import { MoreHorizontalIcon, TrashIcon } from "lucide-react"
-import type { FC, MouseEvent } from "react"
+import type { FC } from "react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import {
@@ -23,9 +23,7 @@ export const ArchiveDocument: FC<ArchiveDocumentProps> = ({ id }) => {
 
     const archiveDocument = useMutation(api.documents.archiveDocument)
 
-    const handleArchiveDocument = (e: MouseEvent) => {
-        e.stopPropagation()
-
+    const handleArchiveDocument = () => {
         const promise = archiveDocument({ id })
 
         toast.promise(promise, {
@@ -35,13 +33,9 @@ export const ArchiveDocument: FC<ArchiveDocumentProps> = ({ id }) => {
         })
     }
 
-    const onClick = (e: MouseEvent) => {
-        e.stopPropagation()
-    }
-
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger asChild onClick={onClick}>
+            <DropdownMenuTrigger asChild>
                 <Button variant="sidebar-action" size="icon-xs">
                     <MoreHorizontalIcon className="size-4 text-muted-foreground" />
                 </Button>
