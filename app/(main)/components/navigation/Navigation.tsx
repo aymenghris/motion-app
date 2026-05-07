@@ -14,7 +14,7 @@ import {
     TrashItem,
 } from "../items"
 import { UserItems } from "../UserItems"
-import { Navbar } from "./Navbar"
+import { Navbar } from "./navbar/Navbar"
 import { SidebarResizer } from "./SidebarResizer"
 import { SidebarToggleButton } from "./SidebarToggleButton"
 
