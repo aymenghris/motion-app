@@ -5,7 +5,7 @@ import { PlusCircleIcon } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { assets } from "@/constants"
-import { useCreateDocument } from "@/hooks/useCreateDocument"
+import { useCreateDocument } from "@/hooks/document/useCreateDocument"
 import { title } from "@/lib/utils"
 
 const DocumentsPage = () => {
