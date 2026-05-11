@@ -7,16 +7,16 @@ import {
 } from "@/constants"
 import { cn } from "@/lib/utils"
 import type { DocumentId } from "@/types/documents"
-import { ArchiveDocument } from "./ArchiveDocument"
 import { CreateNestedDocument } from "./CreateNestedDocument"
 import { DocumentItemIcon } from "./DocumentItemIcon"
+import { DocumentItemMenu } from "./DocumentItemMenu"
 import { ExpandButton } from "./ExpandButton"
 
 interface DocumentItemProps {
+    documentId: DocumentId
     label: string
     icon: LucideIcon
     onClick: () => void
-    id: DocumentId
     active?: boolean
     expanded?: boolean
     level?: number
@@ -25,7 +25,7 @@ interface DocumentItemProps {
 }
 
 export const DocumentItem = ({
-    id,
+    documentId,
     label,
     icon,
     onClick,
@@ -67,10 +67,10 @@ export const DocumentItem = ({
             </button>
 
             <div className="ml-auto flex items-center gap-x-2">
-                <ArchiveDocument id={id} />
+                <DocumentItemMenu documentId={documentId} />
 
                 <CreateNestedDocument
-                    id={id}
+                    documentId={documentId}
                     expanded={expanded}
                     onExpand={onExpand}
                 />

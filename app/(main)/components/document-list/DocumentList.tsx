@@ -62,7 +62,7 @@ export const DocumentList: FC<DocumentListProps> = ({
                 <div key={document._id}>
                     {/* Render each document as a clickable item */}
                     <DocumentItem
-                        id={document._id}
+                        documentId={document._id}
                         label={document.title}
                         icon={FileIcon}
                         documentIcon={document.icon}

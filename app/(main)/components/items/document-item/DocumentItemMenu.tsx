@@ -1,8 +1,5 @@
 import { useUser } from "@clerk/nextjs"
-import { useMutation } from "convex/react"
 import { MoreHorizontalIcon, TrashIcon } from "lucide-react"
-import type { FC } from "react"
-import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
@@ -11,27 +8,17 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { api } from "@/convex/_generated/api"
+import { useArchiveDocument } from "@/hooks/document/useArchiveDocument"
+import { title } from "@/lib/utils"
 import type { DocumentId } from "@/types/documents"
 
-interface ArchiveDocumentProps {
-    id: DocumentId
+interface DocumentItemMenuProps {
+    documentId: DocumentId
 }
 
-export const ArchiveDocument: FC<ArchiveDocumentProps> = ({ id }) => {
+export const DocumentItemMenu = ({ documentId }: DocumentItemMenuProps) => {
     const { user } = useUser()
-
-    const archiveDocument = useMutation(api.documents.archiveDocument)
-
-    const handleArchiveDocument = () => {
-        const promise = archiveDocument({ id })
-
-        toast.promise(promise, {
-            loading: "Archiving note...",
-            success: "Note archived successfully!",
-            error: "Failed to archive note",
-        })
-    }
+    const { handleArchiveDocument } = useArchiveDocument(documentId)
 
     return (
         <DropdownMenu>
@@ -48,7 +35,7 @@ export const ArchiveDocument: FC<ArchiveDocumentProps> = ({ id }) => {
             >
                 <DropdownMenuItem onClick={handleArchiveDocument}>
                     <TrashIcon className="mr-2 size-4" />
-                    <span>Move to Trash</span>
+                    <span>{title("move to trash")}</span>
                 </DropdownMenuItem>
 
                 <DropdownMenuSeparator />

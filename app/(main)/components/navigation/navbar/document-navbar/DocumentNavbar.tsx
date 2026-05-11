@@ -1,5 +1,6 @@
 import { useQuery } from "convex/react"
 import { MenuIcon } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { api } from "@/convex/_generated/api"
 import type { DocumentId } from "@/types/documents"
 import { ArchivedBanner } from "./ArchivedBanner"
@@ -30,13 +31,15 @@ export const DocumentNavbar = ({
 
     return (
         <>
-            <nav className="flex w-full flex-col items-center gap-x-4 bg-background px-3 py-2 dark:bg-obsidian">
+            <nav className="flex w-full items-center gap-x-4 bg-background px-3 py-2 dark:bg-obsidian">
                 {isCollapsed && (
-                    <MenuIcon
-                        role="button"
+                    <Button
+                        variant="outline"
+                        size="icon-sm"
                         onClick={onMenuClick}
-                        className="size-6 cursor-pointer text-muted-foreground"
-                    />
+                    >
+                        <MenuIcon className="size-5 text-muted-foreground" />
+                    </Button>
                 )}
 
                 <div className="flex w-full items-center justify-between">

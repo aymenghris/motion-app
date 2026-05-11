@@ -8,13 +8,13 @@ import { api } from "@/convex/_generated/api"
 import type { DocumentId } from "@/types/documents"
 
 interface CreateNestedDocumentProps {
-    id: DocumentId
+    documentId: DocumentId
     expanded: boolean
     onExpand: () => void
 }
 
 export const CreateNestedDocument: FC<CreateNestedDocumentProps> = ({
-    id,
+    documentId,
     expanded,
     onExpand,
 }) => {
@@ -24,7 +24,7 @@ export const CreateNestedDocument: FC<CreateNestedDocumentProps> = ({
     const handleCreateDocument = () => {
         const promise = createDocument({
             title: "Untitled",
-            parentDocument: id,
+            parentDocument: documentId,
         }).then((documentId) => {
             if (!expanded) onExpand()
             router.push(`/documents/${documentId}`)
