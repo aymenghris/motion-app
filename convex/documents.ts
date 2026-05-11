@@ -129,7 +129,7 @@ export const getTrash = query({
     },
 })
 
-export const restoreDocument = mutation({
+export const unarchiveDocument = mutation({
     args: { id: v.id("documents") },
     handler: async (ctx, args) => {
         const userId = await getAuthenticatedUser(ctx)
