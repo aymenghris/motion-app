@@ -2,13 +2,13 @@
 
 import { MenuIcon } from "lucide-react"
 import { useParams } from "next/navigation"
-import type { FC } from "react"
+import type { FC, RefObject } from "react"
 import { cn } from "@/lib/utils"
 import type { DocumentId } from "@/types/documents"
-import { DocumentNavbar } from "./DocumentNavbar"
+import { DocumentNavbar } from "./document-navbar/DocumentNavbar"
 
 interface NavbarProps {
-    navbarRef: React.RefObject<HTMLDivElement | null>
+    navbarRef: RefObject<HTMLDivElement | null>
     isResetting: boolean
     isCollapsed: boolean
     isMobile: boolean

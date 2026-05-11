@@ -1,7 +1,7 @@
 "use client"
 
 import { useMutation } from "convex/react"
-import { useRef, useState } from "react"
+import { type ChangeEvent, type KeyboardEvent, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -35,7 +35,7 @@ export const Title = ({ initialData }: TitleProps) => {
         setIsEditing(false)
     }
 
-    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value)
     }
 
@@ -56,7 +56,7 @@ export const Title = ({ initialData }: TitleProps) => {
         })
     }
 
-    const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter") {
             disableEditing()
             void updateDocument({
