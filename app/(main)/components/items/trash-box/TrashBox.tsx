@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useMemo, useState } from "react"
 import { FullScreenLoader } from "@/components/FullScreenLoader"
 import { api } from "@/convex/_generated/api"
-import { DeleteDocumentButton, RestoreDocumentButton } from "./buttons"
+import { DeleteDocumentButton, UnarchiveDocumentButton } from "./buttons"
 import { SearchInput } from "./SearchInput"
 
 const getDocumentTitle = (title?: string | null) => title?.trim() || "Untitled"
@@ -67,7 +67,7 @@ export const TrashBox = () => {
                                     </Link>
 
                                     <div className="ml-2 flex shrink-0 items-center pr-1">
-                                        <RestoreDocumentButton
+                                        <UnarchiveDocumentButton
                                             documentId={document._id}
                                         />
                                         <DeleteDocumentButton

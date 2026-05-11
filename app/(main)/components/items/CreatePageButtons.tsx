@@ -1,5 +1,5 @@
 import { PlusCircle, PlusIcon } from "lucide-react"
-import { useCreateDocument } from "@/hooks/useCreateDocument"
+import { useCreateDocument } from "@/hooks/document/useCreateDocument"
 import { StaticItem } from "./StaticItem"
 
 export const NewPageButton = () => {

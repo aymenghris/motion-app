@@ -1,2 +1,2 @@
 export * from "./DeleteDocumentButton"
-export * from "./RestoreDocumentButton"
+export * from "./UnarchiveDocumentButton"
