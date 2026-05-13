@@ -20,7 +20,7 @@ interface DocumentItemProps {
     active?: boolean
     expanded?: boolean
     level?: number
-    documentIcon?: string
+    documentIcon?: string | null
     onExpand: () => void
 }
 
