@@ -1,11 +1,10 @@
 "use client"
 
-import { useMutation } from "convex/react"
-import { type ChangeEvent, type KeyboardEvent, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Skeleton } from "@/components/ui/skeleton"
-import { api } from "@/convex/_generated/api"
+import { useUpdateDocument } from "@/hooks/document/useUpdateDocument"
+import { useTitleEdit } from "@/hooks/useTitleEdit"
 import type { DocumentData } from "@/types/documents"
 
 interface TitleProps {
@@ -13,58 +12,22 @@ interface TitleProps {
 }
 
 export const Title = ({ initialData }: TitleProps) => {
-    const updateDocument = useMutation(api.documents.updateDocument)
+    const { handleUpdateDocument } = useUpdateDocument(initialData._id)
 
-    const inputRef = useRef<HTMLInputElement>(null)
-    const [isEditing, setIsEditing] = useState(false)
-    const [title, setTitle] = useState(initialData.title)
+    const {
+        inputRef,
+        isEditing,
+        title,
+        setTitle,
+        enableEditing,
+        handleBlur,
+        handleKeyDown,
+    } = useTitleEdit({
+        savedTitle: initialData.title,
+        selectAllOnFocus: true,
+        onSave: (title) => void handleUpdateDocument({ title }),
+    })
 
-    const enableEditing = () => {
-        setIsEditing(true)
-
-        setTimeout(() => {
-            inputRef.current?.focus()
-            inputRef.current?.setSelectionRange(
-                0,
-                inputRef.current.value.length,
-            )
-        }, 0)
-    }
-
-    const disableEditing = () => {
-        setIsEditing(false)
-    }
-
-    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setTitle(event.target.value)
-    }
-
-    const onBlur = () => {
-        disableEditing()
-
-        if (title.length <= 0) {
-            return
-        }
-
-        if (initialData.title === title) {
-            return
-        }
-
-        void updateDocument({
-            id: initialData._id,
-            title,
-        })
-    }
-
-    const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === "Enter") {
-            disableEditing()
-            void updateDocument({
-                id: initialData._id,
-                title,
-            })
-        }
-    }
     return (
         <div className="flex items-center gap-x-1">
             {!!initialData.icon && <p>{initialData.icon}</p>}
@@ -72,9 +35,9 @@ export const Title = ({ initialData }: TitleProps) => {
                 <Input
                     ref={inputRef}
                     value={title}
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    onKeyDown={onKeyDown}
+                    onChange={(e) => setTitle(e.target.value)}
+                    onBlur={handleBlur}
+                    onKeyDown={handleKeyDown}
                     className="h-6 px-2 focus-visible:ring-transparent"
                 />
             ) : (

@@ -1,5 +1,5 @@
 import { useQuery } from "convex/react"
-import { MenuIcon } from "lucide-react"
+import { PanelLeftCloseIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { api } from "@/convex/_generated/api"
 import type { DocumentId } from "@/types/documents"
@@ -38,7 +38,7 @@ export const DocumentNavbar = ({
                         size="icon-sm"
                         onClick={onMenuClick}
                     >
-                        <MenuIcon className="size-5 text-muted-foreground" />
+                        <PanelLeftCloseIcon className="size-5 text-muted-foreground" />
                     </Button>
                 )}
 

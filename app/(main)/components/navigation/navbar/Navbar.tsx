@@ -1,6 +1,6 @@
 "use client"
 
-import { MenuIcon } from "lucide-react"
+import { PanelLeftCloseIcon } from "lucide-react"
 import { useParams } from "next/navigation"
 import type { FC, RefObject } from "react"
 import { cn } from "@/lib/utils"
@@ -43,7 +43,7 @@ export const Navbar: FC<NavbarProps> = ({
             ) : (
                 <nav className="w-full bg-transparent px-3 py-2">
                     {isCollapsed && (
-                        <MenuIcon
+                        <PanelLeftCloseIcon
                             onClick={onMenuClick}
                             role="button"
                             className="cursor-pointer text-muted-foreground"
