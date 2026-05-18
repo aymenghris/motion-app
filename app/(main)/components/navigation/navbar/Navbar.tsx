@@ -22,7 +22,7 @@ export const Navbar: FC<NavbarProps> = ({
     isMobile,
     onMenuClick,
 }) => {
-    const { documentId } = useParams()
+    const { documentId } = useParams<{ documentId: DocumentId }>()
 
     return (
         <div
@@ -36,7 +36,7 @@ export const Navbar: FC<NavbarProps> = ({
         >
             {documentId ? (
                 <DocumentNavbar
-                    documentId={documentId as DocumentId}
+                    documentId={documentId}
                     isCollapsed={isCollapsed}
                     onMenuClick={onMenuClick}
                 />

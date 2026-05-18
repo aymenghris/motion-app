@@ -2,13 +2,13 @@
 
 import { useQuery } from "convex/react"
 import { useParams } from "next/navigation"
+import { CoverImage } from "@/components/cover-image/CoverImage"
 import { Toolbar } from "@/components/toolbar"
 import { api } from "@/convex/_generated/api"
 import type { DocumentId } from "@/types/documents"
 
 const DocumentPage = () => {
-    const params = useParams()
-    const documentId = params.documentId as DocumentId
+    const { documentId } = useParams<{ documentId: DocumentId }>()
 
     const document = useQuery(api.documents.getDocumentById, {
         id: documentId,
@@ -23,7 +23,9 @@ const DocumentPage = () => {
     }
 
     return (
-        <div className="pt-40">
+        <div className="pb-40">
+            <CoverImage url={document.coverImage} />
+
             <div className="mx-auto md:max-w-3xl lg:max-w-4xl">
                 <Toolbar initialData={document} />
             </div>
