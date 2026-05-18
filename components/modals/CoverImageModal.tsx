@@ -1,6 +1,7 @@
 "use client"
 
 import { useParams } from "next/navigation"
+import { Button } from "@/components/ui/button"
 import {
     Dialog,
     DialogContent,
@@ -38,7 +39,9 @@ const CoverImageContent = ({ onClose }: CoverImageContentProps) => {
     return (
         <DialogContent>
             <DialogHeader>
-                <DialogTitle>cover image</DialogTitle>
+                <DialogTitle className="text-center font-semibold text-lg capitalize">
+                    cover image
+                </DialogTitle>
             </DialogHeader>
 
             <div className="flex flex-col items-center gap-4">
@@ -48,13 +51,13 @@ const CoverImageContent = ({ onClose }: CoverImageContentProps) => {
                     disabled={isUploading}
                 />
 
-                <button
+                <Button
                     type="button"
                     onClick={handleConfirm}
                     disabled={!fileState || isUploading}
                 >
-                    {isUploading ? "Uploading…" : "Save"}
-                </button>
+                    {isUploading ? "uploading…" : "save"}
+                </Button>
             </div>
         </DialogContent>
     )
@@ -65,7 +68,7 @@ const CoverImageContent = ({ onClose }: CoverImageContentProps) => {
 export const CoverImageModal = () => {
     const { documentId } = useParams<{ documentId: DocumentId }>()
 
-    const { isOpen, onClose } = useCoverImageStoreSelector()
+    const { isOpen, close, imageUrl } = useCoverImageStoreSelector()
     const { handleUpdateDocument } = useUpdateDocument(documentId)
     const { edgestore } = useEdgeStore()
 
@@ -74,18 +77,21 @@ export const CoverImageModal = () => {
     }
 
     return (
-        <Dialog open={isOpen} onOpenChange={onClose}>
+        <Dialog open={isOpen} onOpenChange={close}>
             <UploaderProvider
                 uploadFn={({ file, signal, onProgressChange }) =>
                     edgestore.publicFiles.upload({
                         file,
                         signal,
                         onProgressChange,
+                        options: {
+                            replaceTargetUrl: imageUrl ?? undefined,
+                        },
                     })
                 }
                 onUploadCompleted={handleUploadCompleted}
             >
-                <CoverImageContent onClose={onClose} />
+                <CoverImageContent onClose={close} />
             </UploaderProvider>
         </Dialog>
     )
