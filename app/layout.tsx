@@ -8,6 +8,7 @@ import ConvexClientProvider from "@/components/providers/ConvexClientProvider"
 import { ModalProvider } from "@/components/providers/ModalProvider"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import { assets } from "@/constants"
+import { EdgeStoreProvider } from "@/lib/edgestore"
 
 export const metadata: Metadata = {
     title: "Motion",
@@ -37,18 +38,20 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
             <body>
                 <ClerkProvider afterSignOutUrl="/">
                     <ConvexClientProvider>
-                        <ThemeProvider
-                            attribute="class"
-                            defaultTheme="system"
-                            enableSystem
-                            disableTransitionOnChange
-                            storageKey="theme"
-                        >
-                            <FaviconHandler />
-                            <Toaster position="bottom-right" />
-                            <ModalProvider />
-                            {children}
-                        </ThemeProvider>
+                        <EdgeStoreProvider>
+                            <ThemeProvider
+                                attribute="class"
+                                defaultTheme="system"
+                                enableSystem
+                                disableTransitionOnChange
+                                storageKey="theme"
+                            >
+                                <FaviconHandler />
+                                <Toaster position="bottom-right" />
+                                <ModalProvider />
+                                {children}
+                            </ThemeProvider>
+                        </EdgeStoreProvider>
                     </ConvexClientProvider>
                 </ClerkProvider>
             </body>
