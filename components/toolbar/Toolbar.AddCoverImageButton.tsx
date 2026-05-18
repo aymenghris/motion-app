@@ -5,13 +5,13 @@ import { Button } from "@/components/ui/button"
 import { useCoverImageStoreSelector } from "@/stores/use-cover-image-store"
 
 export const AddCoverImageButton = () => {
-    const { onOpen } = useCoverImageStoreSelector()
+    const { open } = useCoverImageStoreSelector()
 
     return (
         <Button
             variant="outline"
             size="sm"
-            onClick={onOpen}
+            onClick={open}
             className="text-muted-foreground text-xs"
         >
             <ImageIcon className="mr-2 size-4" />

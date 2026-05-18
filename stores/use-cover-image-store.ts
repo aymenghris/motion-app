@@ -1,24 +1,35 @@
 import { create } from "zustand"
 import { useShallow } from "zustand/shallow"
 
-interface useCoverImageStore {
+interface CoverImageStore {
+    imageUrl?: string | null
     isOpen: boolean
-    onOpen: () => void
-    onClose: () => void
+
+    open: () => void
+    close: () => void
+    replaceImage: (url?: string | null) => void
 }
 
-const useCoverImageStore = create<useCoverImageStore>((set) => ({
+const useCoverImageStore = create<CoverImageStore>((set) => ({
+    imageUrl: undefined,
     isOpen: false,
-    onOpen: () => set({ isOpen: true }),
-    onClose: () => set({ isOpen: false }),
+
+    open: () => set({ isOpen: true }),
+
+    close: () => set({ isOpen: false, imageUrl: undefined }),
+
+    replaceImage: (url?: string | null) => set({ isOpen: true, imageUrl: url }),
 }))
 
 const useCoverImageStoreSelector = () => {
     return useCoverImageStore(
         useShallow((state) => ({
+            imageUrl: state.imageUrl,
             isOpen: state.isOpen,
-            onOpen: state.onOpen,
-            onClose: state.onClose,
+
+            open: state.open,
+            close: state.close,
+            replaceImage: state.replaceImage,
         })),
     )
 }
