@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import { Skeleton } from "../ui/skeleton"
 import CoverImageButtons from "./CoverImageButtons"
 
 interface CoverImageProps {
@@ -38,4 +39,8 @@ export const CoverImage = ({ imageUrl, preview }: CoverImageProps) => {
             {hasImage && !preview && <CoverImageButtons imageUrl={imageUrl} />}
         </div>
     )
+}
+
+CoverImage.Skeleton = () => {
+    return <Skeleton className="h-[12vh] w-full" />
 }

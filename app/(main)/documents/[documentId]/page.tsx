@@ -6,6 +6,7 @@ import { CoverImage } from "@/components/cover-image/CoverImage"
 import { Toolbar } from "@/components/toolbar"
 import { api } from "@/convex/_generated/api"
 import type { DocumentId } from "@/types/documents"
+import { DocumentPageSkeleton } from "./components/DocumentPageSkeleton"
 
 const DocumentPage = () => {
     const { documentId } = useParams<{ documentId: DocumentId }>()
@@ -15,7 +16,7 @@ const DocumentPage = () => {
     })
 
     if (document === undefined) {
-        return <div>Loading...</div>
+        return <DocumentPageSkeleton />
     }
 
     if (document === null) {
