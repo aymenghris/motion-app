@@ -15,11 +15,7 @@ interface EditorProps {
     editable?: boolean
 }
 
-export const Editor = ({
-    documentId,
-    initialContent,
-    editable,
-}: EditorProps) => {
+const Editor = ({ documentId, initialContent, editable }: EditorProps) => {
     /*
      * BlockNote stores editor state as complex nested JS objects in memory,
      * but databases, localStorage, and APIs only accept string data.
@@ -54,3 +50,5 @@ export const Editor = ({
         />
     )
 }
+
+export default Editor

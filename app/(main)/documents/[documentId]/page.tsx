@@ -3,7 +3,7 @@
 import { useQuery } from "convex/react"
 import { useParams } from "next/navigation"
 import { CoverImage } from "@/components/cover-image/CoverImage"
-import { Editor } from "@/components/Editor"
+import { Editor } from "@/components/editor/DynamicEditor"
 import { Toolbar } from "@/components/toolbar"
 import { api } from "@/convex/_generated/api"
 import type { DocumentId } from "@/types/documents"
