@@ -13,6 +13,9 @@ export const assets = {
     documents: {
         empty: "/documents/empty.svg",
     },
+    error: {
+        fishing: "/error/fishing.svg",
+    },
 }
 
 export const SIDEBAR_CONSTANTS = {
