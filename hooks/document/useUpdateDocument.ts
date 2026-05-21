@@ -11,16 +11,30 @@ type UpdateDocumentFields = {
     isPublished?: boolean
 }
 
+type ToastMessages = {
+    loading?: string
+    success?: string
+    error?: string
+}
+
+const defaultMessages: Required<ToastMessages> = {
+    loading: "Updating document...",
+    success: "Document updated successfully",
+    error: "Failed to update document",
+}
+
 export const useUpdateDocument = (documentId: DocumentId) => {
     const updateDocument = useMutation(api.documents.updateDocument)
 
-    const handleUpdateDocument = (fields: UpdateDocumentFields) => {
+    const handleUpdateDocument = (
+        fields: UpdateDocumentFields,
+        toastMessages?: ToastMessages,
+    ) => {
         const promise = updateDocument({ id: documentId, ...fields })
 
         toast.promise(promise, {
-            loading: "Updating document...",
-            success: "Document updated successfully",
-            error: "Failed to update document",
+            ...defaultMessages,
+            ...toastMessages,
         })
     }
 
