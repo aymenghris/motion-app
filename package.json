@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "concurrently \"npm run dev:next\" \"npm run dev:convex\"",
-        "build": "next build",
+        "build": "convex codegen && next build",
         "start": "next start",
         "lint": "biome check",
         "format": "biome format --write",
