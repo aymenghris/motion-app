@@ -6,6 +6,7 @@ import type { DocumentId } from "@/types/documents"
 import { ArchivedBanner } from "./ArchivedBanner"
 import { DocumentNavbarSkeleton } from "./DocumentNavbarSkeleton"
 import { DocumentOptionsMenu } from "./DocumentOptionsMenu"
+import { Publish } from "./publish/Publish"
 import { Title } from "./Title"
 
 interface DocumentNavbarProps {
@@ -46,6 +47,7 @@ export const DocumentNavbar = ({
                     <Title initialData={document} />
 
                     <div className="flex items-center gap-x-2">
+                        <Publish initialData={document} />
                         <DocumentOptionsMenu documentId={documentId} />
                     </div>
                 </div>
