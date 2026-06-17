@@ -39,17 +39,19 @@ export const IconDisplay = ({
                 </div>
             </EmojiIconPicker>
 
-            <Button
-                size="icon"
-                variant="outline"
-                onClick={handleRemoveIcon}
-                className={cn(
-                    "rounded-full text-muted-foreground text-xs opacity-0 transition",
-                    "group-hover/icon:opacity-100",
-                )}
-            >
-                <XIcon className="size-4" />
-            </Button>
+            {icon && (
+                <Button
+                    size="icon"
+                    variant="outline"
+                    onClick={handleRemoveIcon}
+                    className={cn(
+                        "rounded-full text-muted-foreground text-xs opacity-0 transition",
+                        "group-hover/icon:opacity-100",
+                    )}
+                >
+                    <XIcon className="size-4" />
+                </Button>
+            )}
         </div>
     )
 }
